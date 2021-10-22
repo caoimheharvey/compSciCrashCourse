@@ -15,3 +15,21 @@ NOTE: Do not use loops
 s = "this is a string"
 
 # Write the code here
+if "i" in s and "u" in s or "a" in s:
+    r = len(s) % 2
+    if r == 0:
+        print("No remainder and contains i, u or a")
+    else:
+        print(r)
+elif "o" in s or "e" in s:
+    r = (len(s) * 5) % 2
+    if r == 0:
+        print("No remainder and contains o or e")
+    else:
+        print(r)
+else:
+    r = len(s) % 3
+    if r == 0:
+        print("No remainder but does not contains i, u or a")
+    else:
+        print(r)
