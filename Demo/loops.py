@@ -1,26 +1,33 @@
-num_list = [1, 2, 3, 5, 6, 7]
+# regular for each loop with a list
+names = ["sarah", "mathew", "donald", "duck", "mickey", "mouse"]
+for name in names:
+    print(name)
 
-print("For each value in num_list")
-for num in num_list:
-    print(num)
+# output all values from 1-100 by 5s
+for i in range(1,101, 5):
+    print(i)
 
-string_val = "this is a string"
-for s in string_val:
-    print(s)
+# reverse the above
+for i in range(100, 0, -5):
+    print(i)
 
-print("\nFor every second value between 0 and 20")
-for num in range(0, 20, 2):
-    print(num)
-
-for i in range(len(string_val)):
-    if i + 2 < len(string_val):
-        break
-    print(i, string_val[i])
-
-print("\nWhile counter is less than 5")
 counter = 0
-while counter < 5:
+while counter < 10:
     counter += 1
-    # another way to write that is:
-    # counter = counter + 1
 print(counter)
+
+mydict = {
+    'name': 'Caoimhe',
+    'age': 25,
+    'occupation': 'Software Engineer',
+    'address': ['10', 'Gopeng street', '19-22', 'Icon', '078878', 'Singapore']
+}
+
+for key, val in mydict.items():
+    print(key, val)
+
+
+for value in mydict.values():
+    if isinstance(value, list):
+        for entry in value:
+            print(entry)
