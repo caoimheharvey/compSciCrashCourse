@@ -3,7 +3,7 @@ Type Casting
 1. Convert a float to a list.
 """
 # Write code here
-
+print(list(str(123.432)))
 
 """
 Conditionals
