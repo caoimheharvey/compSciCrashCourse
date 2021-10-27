@@ -109,13 +109,21 @@ def check_valid_existing_pin(usercode, pin):
 exit = False
 while not exit:
     menu_selection = None
+    print("\n-------------------------------------------------")
     usercode = input("Please enter your user code: ")
     if usercode == "quit":
         exit = True
         break
     if check_valid_usercode(usercode):
-        pin = int(input("Please enter your pin: "))
-        if check_valid_existing_pin(usercode, pin):
+        correct_pin = False
+        for i in range(1, 4):
+            pin = int(input("Please enter your pin: "))
+            if not check_valid_existing_pin(usercode, pin):
+                print(f"Incorrect pin. Attempt {i}/3")
+            else:
+                correct_pin = True
+                break
+        if correct_pin:
             while menu_selection != 5:
                 print("Please select an option numerically from the below:")
                 print("1 - Check Balance")
