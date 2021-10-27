@@ -19,6 +19,11 @@ contact_details = {
 }
 # Write code here
 
+if "home" in contact_details.keys():
+    print(True)
+else:
+    print(False)
+
 
 """
 Loops
@@ -31,8 +36,9 @@ nested_dictionary = {
     "key3": {"sub-key1": "sub-val1", "sub-key2":"sub-val2"}
 }
 # Write code here
-
-
+for key, values in nested_dictionary.items():
+    for v in values:
+        print(v)
 
 
 """
@@ -40,8 +46,14 @@ Functions
 4. Define a function that returns a list of odd values from 5 to some value passed as an argument.
 """
 # Write code here
+def output_every_5(end):
+    odd_vals = []
+    for i in range(5, end):
+        if i % 2 != 0:
+            odd_vals.append(i)
+    return odd_vals
 
-
+print(output_every_5(27))
 
 
 """
@@ -49,7 +61,8 @@ List Comprehensions
 5. Populate a dictionary using List Comprehension Formatting.
 """
 # Write code here
+old_dict = {1:2, 3:4, 5:6, 7:8}
+dict_comprehension = {k+1:v+1 for k, v in old_dict.items()}
 
-
-
+print(dict_comprehension)
 

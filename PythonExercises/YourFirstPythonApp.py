@@ -33,3 +33,108 @@ have the option displayed to exit by entering the value "quit"
 -----
 This program will only use topics previously covered in Part 1-3 of the lessons.
 """
+
+users = {
+    "1234": {
+        "pin": 4321,
+        "balance": 500.00
+    },
+    "2345": {
+        "pin": 5432,
+        "balance": 500.00
+    },
+    "3456": {
+        "pin": 6543,
+        "balance": 500.00
+    },
+    "4567": {
+        "pin": 7654,
+        "balance": 500.00
+    },
+}
+
+
+def withdraw(usercode):
+    withdraw_amount = int(input("Please enter the amount you wish to withdraw: "))
+    if withdraw_amount not in [10, 20, 50, 80, 100]:
+        print("Valid amount not entered. Returning to menu.")
+        return
+    current_balance = users[usercode]['balance']
+    if current_balance - withdraw_amount >= 0:
+        users[usercode]['balance'] = current_balance - withdraw_amount
+        print(f"You have withdrawn {str(withdraw_amount)}")
+    else:
+        print("You do not have sufficient money to withdraw.")
+
+
+def deposit(usercode):
+    deposit_amount = float(input("Enter the amount you'd like to deposit: "))
+    users[usercode]['balance'] += deposit_amount
+    print(f"Deposit of {str(deposit_amount)} has been successful.")
+
+
+def change_pin(usercode, pin):
+    user_existing_pin = int(input("Please verify your existing pin: "))
+    if pin == user_existing_pin:
+        print("You have 3 attempts to add a new pin...")
+        for i in range(3):
+            new_pin = int(input("Please enter your new pin: "))
+            if new_pin != pin and 1111 < new_pin < 9999:
+                confirmation = int(input("Please confirm your new pin: "))
+                if new_pin == confirmation:
+                    users[usercode]['pin'] = new_pin
+                    break
+                else:
+                    print("Confirmation incorrect")
+            else:
+                print("Pin must be different than your old pin and between 1111 and 9999.")
+
+
+def display_balance(usercode):
+    print(f"Your balance is S$ {str(users[usercode]['balance'])}")
+
+
+def check_valid_usercode(usercode):
+    if usercode not in users.keys():
+        return False
+    return True
+
+
+def check_valid_existing_pin(usercode, pin):
+    if pin == users[usercode]['pin']:
+        return True
+    return False
+
+
+exit = False
+while not exit:
+    menu_selection = None
+    usercode = input("Please enter your user code: ")
+    if usercode == "quit":
+        exit = True
+        break
+    if check_valid_usercode(usercode):
+        pin = int(input("Please enter your pin: "))
+        if check_valid_existing_pin(usercode, pin):
+            while menu_selection != 5:
+                print("Please select an option numerically from the below:")
+                print("1 - Check Balance")
+                print("2 - Withdraw")
+                print("3 - Deposit")
+                print("4 - Change pin")
+                print("5 - Exit")
+                menu_selection = int(input("Please enter your selection: "))
+                if menu_selection == 1:
+                    display_balance(usercode)
+                elif menu_selection == 2:
+                    withdraw(usercode)
+                    display_balance(usercode)
+                elif menu_selection == 3:
+                    deposit(usercode)
+                    display_balance(usercode)
+                elif menu_selection == 4:
+                    change_pin(usercode, pin)
+                elif menu_selection == 5:
+                    break
+                else:
+                    print("Not a valid selection, try again.")
