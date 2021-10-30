@@ -42,7 +42,7 @@ print(animals)
 animals[3] = animals[3].upper()
 animals.sort()
 unicorn_index = animals.index("unicorn")
-animals.remove("unicorn")
+animals.pop(unicorn_index)
 animals.insert(unicorn_index, ["centaurs", "cracken", "unicorn", "griffyn"])
 print(animals[unicorn_index][1])
 
@@ -51,7 +51,7 @@ print(animals[unicorn_index][1])
 Dictionaries
 4. Create a dictionary called university. There should be a name field, address field and a classes field.
 The classes field should store a dictionary containing the name of the class and a list of names of the students enrolled.
-Get the total number of classes (at least 4 classes).
+Display the names of all the classes.
 """
 # Write code here
 university = {
@@ -65,4 +65,4 @@ university = {
     }
 }
 
-print(len(university['classes']))
+print(university['classes'].keys())
