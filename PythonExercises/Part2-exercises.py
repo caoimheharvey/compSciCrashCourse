@@ -39,7 +39,7 @@ Output the 2nd mythical creature.
 Dictionaries
 4. Create a dictionary called university. There should be a name field, address field and a classes field.
 The classes field should store a dictionary containing the name of the class and a list of names of the students enrolled.
-Get the total number of students enrolled in each class and remove the class with the lowest number of students.
+Get the names of all the classes.
 """
 # Write code here
 
