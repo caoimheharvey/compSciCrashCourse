@@ -33,3 +33,38 @@ have the option displayed to exit by entering the value "quit"
 -----
 This program will only use topics previously covered in Part 1-3 of the lessons.
 """
+
+credentials = {"0000": "0000", "1111": "0000", "2222": "0000", "3333": "0000"}
+
+
+def login():
+    print("Welcome to GiveUsUrMoney Bank, the most trustworthy bank in the country!")
+    print("Please type your user code to enter your account, or 'exit' to terminate the session")
+    bool = True
+
+    while bool == True:
+        user_code = input()
+        if user_code != "exit":
+            login_counter = 3
+            while user_code in credentials and login_counter > 0:
+                # while login_counter > 1:
+                print("Please type the PIN code associated to your account")
+                user_pincode = input()
+                if user_pincode == credentials[user_code]:
+                    print("Welcome to your account!")
+                    break
+                else:
+                    login_counter = login_counter - 1
+                    print("Wrong PIN code, number of try remaining: " + str(login_counter))
+            else:
+                if login_counter < 1:
+                    print("Number of try expired. Please type your user code to enter your account again")
+                else:
+                    print("We were not able to find your account, please type your PIN code again")
+        else:
+            print("Thank you for banking with us today!")
+            bool = False
+
+    # print("Hello, " + user_code)
+
+print(login())
