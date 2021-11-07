@@ -79,6 +79,7 @@ def change_pin(usercode, pin):
         print("You have 3 attempts to add a new pin...")
         for i in range(3):
             new_pin = int(input("Please enter your new pin: "))
+            # verifies new pin isnt the same as the old pin, and its between 1111 and 9999, ensuring a 4 digit pin code.
             if new_pin != pin and 1111 < new_pin < 9999:
                 confirmation = int(input("Please confirm your new pin: "))
                 if new_pin == confirmation:
@@ -106,17 +107,23 @@ def check_valid_existing_pin(usercode, pin):
     return False
 
 
+# Boolean that controls program flow
 exit = False
 while not exit:
+    # value has to be held outside of the below while loop
     menu_selection = None
     print("\n-------------------------------------------------")
     usercode = input("Please enter your user code: ")
     if usercode == "quit":
         exit = True
-        break
+        break # breaks out of the while loop
+    # function returns true or false
     if check_valid_usercode(usercode):
+        # assume pin code is incorrect until proven correct
         correct_pin = False
+        # three tries to enter correct password
         for i in range(1, 4):
+            # casting input result to an int
             pin = int(input("Please enter your pin: "))
             if not check_valid_existing_pin(usercode, pin):
                 print(f"Incorrect pin. Attempt {i}/3")
@@ -124,6 +131,8 @@ while not exit:
                 correct_pin = True
                 break
         if correct_pin:
+            # allow user to select from menu repeatedly
+            # if it is set to 5 then it should exit from the menu loop
             while menu_selection != 5:
                 print("Please select an option numerically from the below:")
                 print("1 - Check Balance")
