@@ -34,7 +34,8 @@ have the option displayed to exit by entering the value "quit"
 This program will only use topics previously covered in Part 1-3 of the lessons.
 """
 
-credentials = {"0000": "0000", "1111": "0000", "2222": "0000", "3333": "0000"}
+credentials = {'0000': {'pin': '0000', 'balance': 500.00}, '1111': {'pin': '0000', 'balance': 500.00},
+               '2222': {'pin': '0000', 'balance': 500.00}, '3333': {'pin': '0000', 'balance': 500.00}}
 
 
 def login():
@@ -50,21 +51,85 @@ def login():
                 # while login_counter > 1:
                 print("Please type the PIN code associated to your account")
                 user_pincode = input()
-                if user_pincode == credentials[user_code]:
+                if user_pincode == credentials[user_code].get('pin'):
                     print("Welcome to your account!")
-                    break
+                    user_code = main_menu(user_code)
                 else:
                     login_counter = login_counter - 1
                     print("Wrong PIN code, number of try remaining: " + str(login_counter))
             else:
                 if login_counter < 1:
                     print("Number of try expired. Please type your user code to enter your account again")
+                elif user_code == "exit":
+                    print("Returning to login menu. Please type your user code to enter your account, or 'exit' to terminate the session")
                 else:
                     print("We were not able to find your account, please type your PIN code again")
         else:
             print("Thank you for banking with us today!")
             bool = False
 
-    # print("Hello, " + user_code)
 
-print(login())
+def main_menu(user_code):
+    main_menu_bool = True
+    while main_menu_bool == True:
+        print(
+            "Please select your option: \n 1. Check balance \n 2. Withdraw cash \n 3. Deposit cash \n 4. Change PIN code \n 5. Exit")
+        main_menu_input = input()
+        if main_menu_input == '1':
+            print("You currently have " + str(credentials[user_code].get('balance')) + "SGD in your balance")
+        elif main_menu_input == '2':
+            print("Select the amount you want to withdraw: \n 1. 10 \n 2. 20 \n 3. 50 \n 4. 80 \n 5. 100")
+            withdraw_input = input()
+            withdraw_amount = 0
+            if withdraw_input == '1':
+                withdraw_amount = 10
+            elif withdraw_input == '2':
+                withdraw_amount = 20
+            elif withdraw_input == '3':
+                withdraw_amount = 50
+            elif withdraw_input == '4':
+                withdraw_amount = 80
+            elif withdraw_input == '5':
+                withdraw_amount = 100
+            else:
+                print("Please input your option choice as 1-5")
+            if withdraw_amount == 0:
+                continue
+            elif credentials[user_code].get('balance') >= withdraw_amount:
+                credentials[user_code]['balance'] -= withdraw_amount
+                print("New balance: " + str(credentials[user_code]['balance']))
+            else:
+                print("Your balance is lower than the requested withdraw amount")
+        elif main_menu_input == '3':
+            print("Please input the amount you wish to deposit")
+            deposit_input = float(input())
+            credentials[user_code]['balance'] += deposit_input
+            print("New balance: " + str(credentials[user_code]['balance']))
+        elif main_menu_input == '4':
+            print("Please type your current PIN code")
+            menu_old_pincode = input()
+            if menu_old_pincode == credentials[user_code].get('pin'):
+                print("Please input your new PIN code")
+                menu_new_pincode = input()
+                print("Please confirm your new PIN code")
+                menu_new_pincode_2 = input()
+                if menu_new_pincode == menu_new_pincode_2:
+                    if len(menu_new_pincode) == 4 and menu_new_pincode.isnumeric() == True:
+                        credentials[user_code]['pin'] = menu_new_pincode
+                        print(credentials[user_code].get('pin'))
+                        print("Your PIN code has been successfully updated!")
+                    else:
+                        print("PIN code should be 4 digits only. Please try again")
+                else:
+                    print("The PIN codes your input are different, please try again")
+            else:
+                print("Wrong PIN code")
+                continue
+        elif main_menu_input == '5':
+            print("Thank you for banking with us today!")
+            return "exit"
+        else:
+            print("Please input your option choice as 1-5")
+
+
+login()
