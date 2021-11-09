@@ -150,7 +150,7 @@ while not exit:
                     deposit(usercode)
                     display_balance(usercode)
                 elif menu_selection == 4:
-                    change_pin(usercode, pin)
+                    change_pin(usercode, users[usercode]['pin'])
                 elif menu_selection == 5:
                     break
                 else:
