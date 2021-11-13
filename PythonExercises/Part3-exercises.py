@@ -58,7 +58,7 @@ print(output_every_5(27))
 
 """
 List Comprehensions
-5. Populate a dictionary using List Comprehension Formatting.
+5. Populate a list using list comprehension with even numbers 1-100
 """
 # Write code here
 old_dict = {1:2, 3:4, 5:6, 7:8}
