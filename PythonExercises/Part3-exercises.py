@@ -3,7 +3,8 @@ Type Casting
 1. Convert a float to a list.
 """
 # Write code here
-
+lol = 2.123
+print(list(str(lol)))
 
 """
 Conditionals
@@ -17,6 +18,12 @@ contact_details = {
         "home": "12345683"
     }
 }
+
+if "home" in contact_details:
+    print("Yes")
+else:
+    print("No")
+
 # Write code here
 
 
@@ -31,8 +38,9 @@ nested_dictionary = {
     "key3": {"sub-key1": "sub-val1", "sub-key2":"sub-val2"}
 }
 # Write code here
-
-
+for key, values in nested_dictionary.items():
+    for v in values:
+        print(v)
 
 
 """
