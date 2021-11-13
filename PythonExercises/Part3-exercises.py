@@ -54,7 +54,7 @@ Functions
 
 """
 List Comprehensions
-5. Populate a dictionary using List Comprehension Formatting.
+5. Populate a list using list comprehension with even numbers 1-100
 """
 # Write code here
 
