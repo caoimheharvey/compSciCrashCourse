@@ -56,7 +56,8 @@ users = {
 
 def withdraw(usercode):
     withdraw_amount = int(input("Please enter the amount you wish to withdraw: "))
-    if withdraw_amount not in [10, 20, 50, 80, 100]:
+    list_withdraw = [10, 20, 50, 80, 100]
+    if withdraw_amount not in list_withdraw:
         print("Valid amount not entered. Returning to menu.")
         return
     current_balance = users[usercode]['balance']
