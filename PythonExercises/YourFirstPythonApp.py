@@ -34,8 +34,8 @@ have the option displayed to exit by entering the value "quit"
 This program will only use topics previously covered in Part 1-3 of the lessons.
 """
 
-credentials = {'0000': {'pin': '0000', 'balance': 500.00}, '1111': {'pin': '0000', 'balance': 500.00},
-               '2222': {'pin': '0000', 'balance': 500.00}, '3333': {'pin': '0000', 'balance': 500.00}}
+credentials = {'0000': {'pin': '1111', 'balance': 500.00}, '1111': {'pin': '1111', 'balance': 500.00},
+               '2222': {'pin': '1111', 'balance': 500.00}, '3333': {'pin': '1111', 'balance': 500.00}}
 
 
 def login():
@@ -114,12 +114,12 @@ def main_menu(user_code):
                 print("Please confirm your new PIN code")
                 menu_new_pincode_2 = input()
                 if menu_new_pincode == menu_new_pincode_2:
-                    if len(menu_new_pincode) == 4 and menu_new_pincode.isnumeric() == True:
+                    if len(menu_new_pincode) == 4 and menu_new_pincode.isnumeric() == True and '0' not in menu_new_pincode:
                         credentials[user_code]['pin'] = menu_new_pincode
                         print(credentials[user_code].get('pin'))
                         print("Your PIN code has been successfully updated!")
                     else:
-                        print("PIN code should be 4 digits only. Please try again")
+                        print("PIN code should be 4 digits only, comprised between 1 and 9. Please try again")
                 else:
                     print("The PIN codes your input are different, please try again")
             else:
