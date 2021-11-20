@@ -126,11 +126,9 @@ def student_mgmt_prompt():
         elif student_mgmt_user_option == 2:
             delete_student(unenrolled_student_info)
         elif student_mgmt_user_option == 3:
-            print("option 3")
-
+            add_student_grade(class_info)
         elif student_mgmt_user_option == 4:
-            print("option 4")
-
+            enroll_student_to_class(class_info, unenrolled_student_info)
         elif student_mgmt_user_option == 5:
             print("option 5")
 
@@ -155,6 +153,38 @@ def delete_student(unenrolled_student_info):
         print(unenrolled_student_info)
     else:
         print("Student doesn't exist")
+
+def add_student_grade(class_info):
+    student_grade_class_prompt = input("In which class is the student currently enrolled in? \n")
+    if student_grade_class_prompt in class_info:
+        student_grade_name_prompt = input("What is the name of the student? \n")
+        if student_grade_name_prompt in class_info[student_grade_class_prompt]:
+            add_student_grade_prompt = input("Please input the student grade \n")
+            if add_student_grade_prompt.isnumeric() and int(add_student_grade_prompt) >= 0 and int(
+                    add_student_grade_prompt) < 101:
+                class_info[student_grade_class_prompt][student_grade_name_prompt] = int(add_student_grade_prompt)
+                print(class_info)
+            else:
+                print("Grade should be within 0 and 100")
+        else:
+            print("Student doesn't exist in class")
+    else:
+        print("Class doesn't exist")
+
+def enroll_student_to_class(class_info, unenrolled_student_info):
+    print(unenrolled_student_info)
+    student_to_enroll_prompt = input("Which student would you like to enroll? \n")
+    if student_to_enroll_prompt in unenrolled_student_info:
+        class_to_enroll_prompt = input("In which class would you like to enroll the student to? \n")
+        if class_to_enroll_prompt in class_info:
+            class_info[class_to_enroll_prompt].update({student_to_enroll_prompt: None})
+            unenrolled_student_info.pop(student_to_enroll_prompt)
+            print(class_info)
+            print(unenrolled_student_info)
+        else:
+            print("Class doesn't exist")
+    else:
+        print("Student doesn't exist or is already enrolled")
 
 login_prompt()
 # class_mgmt_prompt()
