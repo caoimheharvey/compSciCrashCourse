@@ -1,15 +1,15 @@
 """
 Inside the files folder within the PythonExcercises folder you
 will find a comma separated file called 'employees.csv'
-You will need to perform various tasks with the data contained
-within this file, each task should be a separate function:
-1. Output anyone who has the same first and last name
-2. Output average salary of people who live in a provided city between a provided age range (to be provided by user)
-3. Output the average salary for people in a provided job (provided by user)
-4. Output the average salary for people between 20 and 30
-5. Output the most common last name and the top 3 earners with the last name, and what their job is
-6. Output how many people below 20 there are and what the most common job they have is
-7. Output all the details into another csv file in the same folder called "sorted_alpha.csv"
-    where the details are sorted alphabetically (a-z) by the last name
-8. After each result from 1-5 you should write this to a file called "all_results.txt"
+You will need to perform 2 tasks on the data using exception handling where appropriate throughout:
+1. Create a new file called "ordered_employees.csv" which will contain all the data in employees.csv but it must be
+ordered alphabetically by last name, and lowest to highest salary
+2. Prompt the user to enter the following parameters and return the data for the employees that fit the category:
+    - Enter a job they wish to search
+    - Age Group
+    - City
+    - Salary Range (should accept in the format min - max)
+    The user can hit enter (a blank line) which will mean they skip and provide no parameter.
+    After the user input is taken it should be passed to a function which will perform the search.
+    The number of the parameters for that function are unknown.
 """
