@@ -52,7 +52,8 @@ def class_mgmt_prompt():
     class_mgmt_session_off = False
     while not class_mgmt_session_off:
         class_mgmt_user_option = int(input(
-            "Please select what you'd like to do: \n1. Create new class \n2. Get number of students enrolled in a class \n3. Delete a class \n4. Get the average students grade in the class \n5. Return to home page \n"))
+            "Please select what you'd like to do: \n1. Create new class \n2. Get number of students enrolled in a "
+            "class \n3. Delete a class \n4. Get the average students grade in the class \n5. Return to home page \n"))
 
         if class_mgmt_user_option not in [1, 2, 3, 4, 5]:
             print("Please input 1 to 5 to choose between options")
@@ -139,8 +140,7 @@ def student_mgmt_prompt():
         elif student_mgmt_user_option == 4:
             enroll_student_to_class(class_info, student_info)
         elif student_mgmt_user_option == 5:
-            print("option 5")
-
+            avg_per_class(class_info, student_info)
         else:
             print("Returning to home page")
             return True
@@ -200,6 +200,15 @@ def enroll_student_to_class(class_info, student_info):
             print("Class doesn't exist")
     else:
         print("Student doesn't exist or is already enrolled")
+
+def avg_per_class(class_info, student_info):
+    for c in class_info:
+        if not class_info[c]:
+            print(c + " doesn't have any enrolled student")
+        else:
+            class_average = sum([student_info[id][c] for id in class_info[c]]) / len(class_info[c])
+            print("Average of class " + c + " is equal to: " + str(class_average))
+
 
 
 login_prompt()

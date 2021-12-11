@@ -57,7 +57,8 @@ List Comprehensions
 5. Populate a list using list comprehension with even numbers 1-100
 """
 # Write code here
-
+even_numbers = [nbr for nbr in range(100) if nbr % 2 == 0]
+print(even_numbers)
 
 
 
