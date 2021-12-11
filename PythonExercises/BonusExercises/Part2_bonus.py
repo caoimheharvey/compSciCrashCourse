@@ -21,3 +21,29 @@ Goat Latin is a made-up language based off of English, sort of like Pig Latin.
  would return: 'Imaa peaksmaaa oatGmaaaa atinLmaaaaa'
 
 """
+
+def string_to_goat_latin(some_text):
+    splitted_text = some_text.split()
+    final_text = []
+    counter = 0
+
+    for s in splitted_text:
+        # can also do:
+        # temp_list = s.split()
+        temp_list = [char for char in s]
+        counter += 1
+        # print(temp_list)
+        if temp_list[0].lower() not in 'aeiou':
+            temp_list.append(temp_list.pop(0))
+            temp_list.append('m')
+            temp_list.append('a')
+        else:
+            temp_list.append('m')
+            temp_list.append('a')
+        for i in range(counter):
+            temp_list.append('a')
+        final_text.append(''.join(temp_list))
+    print(' '.join(final_text))
+
+
+string_to_goat_latin('I speak Goat Latin')
