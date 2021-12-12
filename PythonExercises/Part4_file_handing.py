@@ -11,3 +11,24 @@
 8. Print the contents of the file
 9. Delete the file
 """
+
+with open('new_file.txt', 'w') as file:
+    file.write("Hello, this is my first time writing to a file in Python. It's very exciting!")
+    file.close()
+
+file = open('new_file.txt')
+content = file.read()
+print(content)
+file.close()
+
+with open('new_file.txt', 'a') as file:
+    file.write("\nI can also append to files, I'm doing great!")
+    file.close()
+
+file = open('new_file.txt')
+content = file.read()
+print(content)
+file.close()
+import os
+
+os.remove('C:\\Users\\darks\\Documents\\git\\compSciCrashCourse\\PythonExercises\\new_file.txt')

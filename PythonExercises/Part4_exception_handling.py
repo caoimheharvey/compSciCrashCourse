@@ -4,14 +4,21 @@ Given the following program, add try...except blocks appropriately
 
 
 def add_10(value):
-    return value + 10
+    try:
+        return value + 10
+    except TypeError:
+        print("Trying to concat a str with int")
+        return 0
 
 
 def subtract(*numbers):
     value = numbers[0]
     for i in range(len(numbers[1]), len(numbers)):
-        value -= numbers[i]
-    return value
+        try:
+            value -= numbers[i]
+        except TypeError:
+            print("Trying to do math with not math")
+        return value
 
 
 def main():
