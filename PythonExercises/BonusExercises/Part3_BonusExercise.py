@@ -51,13 +51,31 @@ with open('C:\\Users\\darks\\Documents\\git\\compSciCrashCourse\\PythonExercises
             dictdino[NAME].update({'stride_length': float(STRIDE_LENGTH), 'stance': STANCE})
         counter += 1
 
-print(dictdino)
-
 for dino in dictdino:
     if 'stride_length' in dictdino[dino] and 'leg_length' in dictdino[dino]:
         SPEED = ((dictdino[dino]['stride_length'] / dictdino[dino]['leg_length']) - 1)\
                 * (dictdino[dino]['leg_length'] * 9.8) ** 0.5
         dictdino[dino].update({'speed': SPEED})
 
-
 print(dictdino)
+
+ordered_list = []
+# adding dino to list based on its speed
+for dino in dictdino:
+    if 'stance' in dictdino[dino]:
+        if dictdino[dino]['stance'] == 'bipedal':
+            # add first dino in list if list is empty
+            if not ordered_list:
+                ordered_list.append(dino)
+            else:
+                for i in ordered_list:
+                    # insert evaluated dino ahead of dino in list if it's faster
+                    if dictdino[dino]['speed'] > dictdino[i]['speed']:
+                        ordered_list.insert(ordered_list.index(i), dino)
+                        break
+                # insert dino at the end if it's not faster than any dino in list
+                if dino not in ordered_list:
+                    ordered_list.append(dino)
+
+
+print(ordered_list)
