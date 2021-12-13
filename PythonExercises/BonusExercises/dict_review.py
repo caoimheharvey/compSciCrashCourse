@@ -1,20 +1,41 @@
 import random, string
 
+dictionary = {
+    'first_name': 'Alexandre',
+    'last_name': 'Wang',
+    'age': 28
+}
 """
 1. Sort a dictionary by values
 """
+
 
 """
 2. Sort a dictionary by key
 """
 
+
 """
 3. Merge two dictionaries
 """
+dict1 = {
+    'key1': 'value1',
+    'key2': 2
+}
+
+dict2 = {
+    'key1': 1,
+    'key3': 3
+}
 
 """
 4. Find the key with the maximum unique values
 """
+dictionary = {
+    'key1': [1,2,3,4,5],
+    'key2': [3,4,5,2],
+    'key3': [1,4,5,67,8,5]
+}
 
 """
 5. Iterate through a dictionary and add 10 to any dict value that is numeric
@@ -58,7 +79,6 @@ You should NOT use a defaultdict for this.
 """
 
 list_of_words = generate_random_words(200, unique_words=True)
-print(list_of_words)
 
 
 """
