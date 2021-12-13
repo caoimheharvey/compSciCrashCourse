@@ -19,7 +19,6 @@ Goat Latin is a made-up language based off of English, sort of like Pig Latin.
  string_to_goat_latin('I speak Goat Latin')
 
  would return: 'Imaa peaksmaaa oatGmaaaa atinLmaaaaa'
-
 """
 
 
@@ -39,3 +38,4 @@ def string_to_goat_latin(string):
 
 
 print(string_to_goat_latin("I speak Goat Latin"))
+
